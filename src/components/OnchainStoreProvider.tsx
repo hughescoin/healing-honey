@@ -17,30 +17,30 @@ type OnchainStoreProviderReact = {
 };
 
 const products: Product[] = [
-  {
-    id: 'product1',
-    name: `Manuka Honey Starter Kit`,
-    price: 0.25,
-    image: starterPackImage,
-  },
-  {
-    id: 'product2',
-    name: `Manuka Honey 500g`,
-    price: 0.1,
-    image: jarImage,
-  },
-  {
-    id: 'product3',
-    name: `"Bee Cool" MUG`,
-    price: 0.02,
-    image: mugImage,
-  },
-  {
-    id: 'product4',
-    name: `Manuka Honey Packets 7g ea.`,
-    price: 0.05,
-    image: packs,
-  },
+  // {
+  //   id: 'product1',
+  //   name: `Manuka Honey Starter Kit`,
+  //   price: 0.25,
+  //   image: starterPackImage,
+  // },
+  // {
+  //   id: 'product2',
+  //   name: `Manuka Honey 500g`,
+  //   price: 0.1,
+  //   image: jarImage,
+  // },
+  // {
+  //   id: 'product3',
+  //   name: `"Bee Cool" MUG`,
+  //   price: 0.02,
+  //   image: mugImage,
+  // },
+  // {
+  //   id: 'product4',
+  //   name: `Manuka Honey Packets 7g ea.`,
+  //   price: 0.05,
+  //   image: packs,
+  // },
 ];
 
 export function OnchainStoreProvider({ children }: OnchainStoreProviderReact) {
