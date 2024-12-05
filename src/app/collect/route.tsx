@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       status: spendReceipt.status ? 'success' : 'failure',
       approvalStatus: approvalReceipt.status ? 'success' : 'failure',
       transactionHash: spendReceipt.transactionHash,
-      transactionUrl: `https://sepolia.basescan.org/tx/${spendReceipt.transactionHash}`,
+      transactionUrl: `https://basescan.org/tx/${spendReceipt.transactionHash}`,
     });
   } catch (error) {
     console.log(error);
