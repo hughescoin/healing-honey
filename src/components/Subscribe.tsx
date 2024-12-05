@@ -24,7 +24,7 @@ export default function Subscribe() {
   const { connectAsync } = useConnect();
   const connectors = useConnectors();
 
-  const { data, error, isLoading, refetch } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ['collectSubscription'],
     queryFn: handleCollectSubscription,
     refetchOnWindowFocus: false,
@@ -45,7 +45,28 @@ export default function Subscribe() {
       }
     }
 
-    const spendPermission = {
+    const domain = {
+      name: 'Spend Permission Manager',
+      version: '1',
+      chainId: chainId,
+      verifyingContract: spendPermissionManagerAddress,
+    } as const;
+
+    const types = {
+      SpendPermission: [
+        { name: 'account', type: 'address' },
+        { name: 'spender', type: 'address' },
+        { name: 'token', type: 'address' },
+        { name: 'allowance', type: 'uint160' },
+        { name: 'period', type: 'uint48' },
+        { name: 'start', type: 'uint48' },
+        { name: 'end', type: 'uint48' },
+        { name: 'salt', type: 'uint256' },
+        { name: 'extraData', type: 'bytes' },
+      ],
+    } as const;
+
+    const message = {
       account: accountAddress, // User wallet address
       spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address, // Spender smart contract wallet address
       token: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' as Address, // ETH (https://eips.ethereum.org/EIPS/eip-7528)
@@ -55,36 +76,23 @@ export default function Subscribe() {
       end: 281474976710655, // max uint48
       salt: BigInt(0),
       extraData: '0x' as Hex,
-    };
+    } as const;
 
     try {
+      console.log('Signing data:', { domain, types, message });
+
       const signature = await signTypedDataAsync({
-        domain: {
-          name: 'Spend Permission Manager',
-          version: '1',
-          chainId: chainId,
-          verifyingContract: spendPermissionManagerAddress,
-        },
-        types: {
-          SpendPermission: [
-            { name: 'account', type: 'address' },
-            { name: 'spender', type: 'address' },
-            { name: 'token', type: 'address' },
-            { name: 'allowance', type: 'uint160' },
-            { name: 'period', type: 'uint48' },
-            { name: 'start', type: 'uint48' },
-            { name: 'end', type: 'uint48' },
-            { name: 'salt', type: 'uint256' },
-            { name: 'extraData', type: 'bytes' },
-          ],
-        },
+        domain,
+        types,
         primaryType: 'SpendPermission',
-        message: spendPermission,
+        message,
       });
-      setSpendPermission(spendPermission);
+
+      console.log('Signature:', signature);
+      setSpendPermission(message);
       setSignature(signature);
     } catch (e) {
-      console.error(e);
+      console.error('Signing error:', e);
     }
     setIsDisabled(false);
   }
@@ -153,7 +161,7 @@ export default function Subscribe() {
                 'flex justify-center'
               )}
             >
-              Save by Subscribing
+              Subscribe
             </span>
           </button>
         </div>
@@ -192,7 +200,7 @@ export default function Subscribe() {
                   key={i}
                   className='hover:underline text-ellipsis truncate'
                   target='_blank'
-                  href={`https://sepolia.basescan.org/tx/${transactionHash}`}
+                  href={`https://basescan.org/tx/${transactionHash}`}
                 >
                   View transaction {transactionHash}
                 </a>
