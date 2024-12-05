@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from '../config';
+import { Providers } from '../components/OnchainProviders';
 
 import './global.css';
 import '@coinbase/onchainkit/styles.css';
@@ -9,7 +10,7 @@ const OnchainProviders = dynamic(
   () => import('src/components/OnchainProviders'),
   {
     ssr: false,
-  },
+  }
 );
 
 export const viewport = {
@@ -33,9 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="flex items-center justify-center">
-        <OnchainProviders>{children}</OnchainProviders>
+    <html lang='en'>
+      <body className='flex items-center justify-center'>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

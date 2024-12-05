@@ -9,6 +9,7 @@ import { useOnchainStoreContext } from './OnchainStoreProvider';
 import type { OnchainStoreCartReact } from 'src/types';
 import OnchainStoreModal from './OnchainStoreModal';
 import { MockCheckoutButton } from './MockCheckoutButton';
+import Subscribe from './Subscribe';
 
 export default function OnchainStoreCart({
   setShowModal,
@@ -20,7 +21,7 @@ export default function OnchainStoreCart({
     return (
       products?.reduce(
         (sum, product) => sum + (quantities[product.id] || 0) * product.price,
-        0,
+        0
       ) || 0
     );
   }, [products, quantities]);
@@ -67,33 +68,36 @@ export default function OnchainStoreCart({
   }, [setShowModal]);
 
   return (
-    <div className="-mx-[50vw] fixed right-1/2 bottom-0 left-1/2 w-screen border-gray-200 border-t bg-[white]">
+    <div className='-mx-[50vw] fixed right-1/2 bottom-0 left-1/2 w-screen border-gray-200 border-t bg-[white]'>
       {showModal && <OnchainStoreModal closeModal={closeModal} />}
-      <div className="mx-auto max-w-5xl ">
-        <div className="flex flex-col items-start justify-between py-4 md:flex-row md:items-center">
-          <span className="mb-2 hidden px-4 text-xs sm:flex md:mb-0 md:w-1/3 lg:px-6">
+      <div className='mx-auto max-w-5xl'>
+        <div className='flex flex-col items-start justify-between py-4 md:flex-row md:items-center'>
+          <span className='mb-2 hidden px-4 text-xs sm:flex md:mb-0 md:w-1/3 lg:px-6'>
             Built with OnchainKit
           </span>
-          <div className="flex w-full grow flex-col items-center justify-between gap-2 px-4 sm:flex-row sm:gap-0 md:w-auto lg:px-6">
-            <h2 className="font-bold text-lg md:w-11/12 ">
+          <div className='flex w-full grow flex-col items-center justify-between gap-2 px-4 sm:flex-row sm:gap-4 md:w-auto lg:px-6'>
+            <h2 className='font-bold text-lg md:w-auto'>
               TOTAL {totalSum.toFixed(2)} USDC
             </h2>
-            <div className="w-64">
-              {/* TODO: comment back in to enable checkout flow */}
-              {/* <Checkout
-                key={key}
-                onStatus={handleStatusChange}
-                chargeHandler={chargeHandler}
-              >
-                <CheckoutButton
-                  coinbaseBranded={true}
-                  text="Pay with Crypto"
-                  disabled={!totalSum}
-                />
-              </Checkout> */}
-
-              {/* TODO: remove, for demo purposes only */}
-              <MockCheckoutButton onClick={openModal} />
+            <div className='flex gap-4 items-center'>
+              <div className='w-64'>
+                {/* TODO: comment back in to enable checkout flow */}
+                {/* <Checkout
+                  key={key}
+                  onStatus={handleStatusChange}
+                  chargeHandler={chargeHandler}
+                >
+                  <CheckoutButton
+                    coinbaseBranded={true}
+                    text="Pay with Crypto"
+                    disabled={!totalSum}
+                  />
+                </Checkout> */}
+                <MockCheckoutButton onClick={openModal} />
+              </div>
+              <div className='w-64'>
+                <Subscribe />
+              </div>
             </div>
           </div>
         </div>
