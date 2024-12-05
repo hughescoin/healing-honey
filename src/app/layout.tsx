@@ -4,14 +4,6 @@ import { Providers } from '../components/OnchainProviders';
 
 import './global.css';
 import '@coinbase/onchainkit/styles.css';
-import dynamic from 'next/dynamic';
-
-const OnchainProviders = dynamic(
-  () => import('src/components/OnchainProviders'),
-  {
-    ssr: false,
-  }
-);
 
 export const viewport = {
   width: 'device-width',
