@@ -47,7 +47,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className='-mx-[50vw] fixed top-10 right-1/2 left-1/2 xs:h-11 w-screen border-gray-200 border-b bg-[white]'>
+    <header className='-mx-[50vw] fixed top-10 right-1/2 left-1/2 xs:h-11 w-screen border-gray-200 border-b bg-[white] z-50'>
       <div className='flex justify-end'></div>
       <div className='mx-auto flex h-full max-w-5xl items-center px-4 py-2 lg:px-6'>
         <div className='flex w-full items-center justify-between'>
