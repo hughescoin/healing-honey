@@ -158,7 +158,7 @@ export default function Subscribe() {
   return (
     <div>
       {!signature ? (
-        <div className='flex w-[450px]'>
+        <div className='flex w-64'>
           <button
             className={cn(
               pressable.primary,
