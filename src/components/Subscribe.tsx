@@ -1,6 +1,6 @@
 'use client';
 import { cn, color, pressable, text } from '@coinbase/onchainkit/theme';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import {
   useAccount,
   useChainId,
@@ -11,6 +11,7 @@ import {
 import { Address, Hex, parseUnits } from 'viem';
 import { useQuery } from '@tanstack/react-query';
 import { spendPermissionManagerAddress } from '../app/lib/abi/SpendPermissionManager';
+import { useOnchainStoreContext } from './OnchainStoreProvider';
 
 export default function Subscribe() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -30,6 +31,23 @@ export default function Subscribe() {
     refetchOnWindowFocus: false,
     enabled: !!signature,
   });
+
+  const { quantities, products } = useOnchainStoreContext();
+
+  const totalSum = useMemo(() => {
+    return (
+      products?.reduce(
+        (sum, product) => sum + (quantities[product.id] || 0) * product.price,
+        0
+      ) || 0
+    );
+  }, [products, quantities]);
+
+  const subscriptionAmount = useMemo(() => {
+    console.log('totalSum', totalSum);
+    console.log('totalSum with 15%', totalSum * 0.15);
+    return Number(totalSum * 0.85);
+  }, [totalSum]);
 
   async function handleSubmit() {
     setIsDisabled(true);
@@ -67,13 +85,13 @@ export default function Subscribe() {
     } as const;
 
     const message = {
-      account: accountAddress, // User wallet address
-      spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address, // Spender smart contract wallet address
-      token: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' as Address, // ETH (https://eips.ethereum.org/EIPS/eip-7528)
-      allowance: parseUnits('10', 18),
-      period: 86400, // seconds in a day
-      start: 0, // unix timestamp
-      end: 281474976710655, // max uint48
+      account: accountAddress,
+      spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address,
+      token: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913' as Address,
+      allowance: parseUnits(subscriptionAmount.toFixed(6), 6),
+      period: 86400,
+      start: 0,
+      end: 281474976710655,
       salt: BigInt(0),
       extraData: '0x' as Hex,
     } as const;
@@ -161,7 +179,7 @@ export default function Subscribe() {
                 'flex justify-center'
               )}
             >
-              Subscribe
+              Subscribe & Save 15%
             </span>
           </button>
         </div>
