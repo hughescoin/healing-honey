@@ -89,7 +89,7 @@ export default function Subscribe() {
       spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address,
       token: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913' as Address,
       allowance: parseUnits(subscriptionAmount.toFixed(6), 6),
-      period: 86400,
+      period: 2592000, // 30 days, sometimes 29 ;)
       start: 0,
       end: 281474976710655,
       salt: BigInt(0),
