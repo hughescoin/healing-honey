@@ -10,7 +10,7 @@ import type { OnchainStoreCartReact } from 'src/types';
 import OnchainStoreModal from './OnchainStoreModal';
 import { MockCheckoutButton } from './MockCheckoutButton';
 import Subscribe from './Subscribe';
-
+import { COINBASE_COMMERCE_API_KEY } from 'src/config';
 export default function OnchainStoreCart({
   setShowModal,
   showModal,
@@ -26,15 +26,13 @@ export default function OnchainStoreCart({
     );
   }, [products, quantities]);
 
-  // TODO: comment back in to enable checkout flow
-
   const { createCharge } = useCreateCharge();
 
   const handleStatusChange = useCallback((status: LifecycleStatus) => {
     console.log('onStatus', status);
   }, []);
 
-  const chargeHandler = useCallback(() => {
+  const chargeHandler = useCallback(async () => {
     const description = Object.keys(quantities)
       .map((productId) => {
         return `${productId}(${quantities[productId]})`;
@@ -49,8 +47,12 @@ export default function OnchainStoreCart({
         currency: 'USD',
       },
     };
-    return createCharge(chargeDetails);
+    const id = await createCharge(chargeDetails);
+    console.log('chargeHandler - Charge ID:', id);
+    return id;
   }, [createCharge, quantities, totalSum]);
+
+  console.log('chargeHandler', chargeHandler);
 
   const key = useMemo(() => {
     if (!quantities) return '';
