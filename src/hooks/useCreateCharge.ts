@@ -1,33 +1,25 @@
 import { useCallback } from 'react';
-import { COINBASE_COMMERCE_API_KEY } from 'src/config';
-import { COMMERCE_API_URL } from 'src/links';
-
-type Price = {
-  amount: string;
-  currency: string;
-};
-export type ChargeDetails = {
-  name?: string;
-  description?: string;
-  pricing_type?: string;
-  local_price?: Price;
-};
+import type { ChargeDetails } from 'src/types';
 
 const useCreateCharge = () => {
   const createCharge = useCallback(async (chargeDetails: ChargeDetails) => {
     try {
-      const res = await fetch(`${COMMERCE_API_URL}/charges`, {
+      console.log('Client - Sending charge details:', chargeDetails);
+      const res = await fetch('/api/createcharge', {
         method: 'POST',
-        body: JSON.stringify(chargeDetails),
         headers: {
           'Content-Type': 'application/json',
-          'X-CC-Api-Key': COINBASE_COMMERCE_API_KEY,
         },
+        body: JSON.stringify(chargeDetails),
       });
-      const { data } = await res.json();
-      return data.id;
+
+      console.log('Client - Response status:', res.status);
+      const data = await res.json();
+      console.log('Client - Response data:', data);
+      console.log('Client - Response data.id :', data.data.id);
+      return data.data.id;
     } catch (error) {
-      console.error('Error creating charge:', error);
+      console.error('Client - Error:', error);
       throw error;
     }
   }, []);
