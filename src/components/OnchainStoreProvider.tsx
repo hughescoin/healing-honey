@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import type { OnchainStoreContextType } from '../types';
 import starterPackImage from '../images/starterpack.webp';
 import jarImage from '../images/single-jar.webp';
-import mugImage from '../images/bee-mug.png';
+import mugImage from '../images/bee-mug.webp';
 import packs from '../images/packs.webp';
 import type { Product } from 'src/types';
 
