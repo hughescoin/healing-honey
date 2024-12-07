@@ -22,7 +22,7 @@ export type QuantityInputReact = {
 export type OnchainStoreContextType = {
   quantities: Quantities;
   setQuantities: (
-    quantities: Quantities | ((prev: Quantities) => Quantities),
+    quantities: Quantities | ((prev: Quantities) => Quantities)
   ) => void;
   products?: Product[];
 };
@@ -44,4 +44,15 @@ export type OnchainStoreModalReact = {
 
 export type MockCheckoutButtonReact = {
   onClick: () => void;
+};
+
+type Price = {
+  amount: string;
+  currency: string;
+};
+export type ChargeDetails = {
+  name?: string;
+  description?: string;
+  pricing_type?: string;
+  local_price?: Price;
 };
