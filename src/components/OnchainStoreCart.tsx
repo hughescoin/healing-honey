@@ -78,9 +78,8 @@ export default function OnchainStoreCart({
             <h2 className='font-bold text-lg md:w-auto'>
               TOTAL {totalSum.toFixed(2)} USDC
             </h2>
-            <div className='flex gap-4 items-center'>
-              <div className='w-64'>
-                {/* TODO: comment back in to enable checkout flow */}
+            <div className='flex items-center space-x-4'>
+              <div className='flex items-center w-64 -mt-[12px]'>
                 <Checkout
                   key={key}
                   onStatus={handleStatusChange}
@@ -92,9 +91,8 @@ export default function OnchainStoreCart({
                     disabled={!totalSum}
                   />
                 </Checkout>
-                {/* <MockCheckoutButton onClick={openModal} /> */}
               </div>
-              <div className='w-64'>
+              <div className='flex items-center w-64'>
                 <Subscribe />
               </div>
             </div>
