@@ -1,53 +1,47 @@
-# Onchain Commerce Template
+# Healing Honey eCommerce Store 🍯
 
-<img width="1200" alt="Thumbnail (1)" src="https://github.com/user-attachments/assets/e1f513ea-d1ac-4baf-908e-35b0456d5565">
+<img width="1200" alt="Thumbnail (1)" src="/src/images/project-thumbnail.png">
 
-An Onchain Commerce Template built with [OnchainKit](https://onchainkit.xyz), and ready to be deployed to Vercel.
+## 🚀 Welcome to the Future of eCommerce!
 
-Play with it live on https://onchain-commerce-template.vercel.app/
+Building an eCommerce store with crypto payments has never been easier! With just a few lines of code, you can start accepting payments and managing subscriptions.
 
-Have fun! ⛵️
+Introducing **Healing Honey** - a cutting-edge eCommerce store built with [OnchainKit](https://onchainkit.xyz). This demo showcases the power of Web3 commerce with:
 
-<br />
+- ⚡ One-click USDC payments powered by Coinbase Commerce
+- 💫 Crypto subscription payments
+- 🔐 Smart Wallet integration for seamless account creation and login
+- 🎨 Beautiful, responsive design
 
-## Setup
+Try it live at: https://onchain-commerce-template.vercel.app/
 
-To ensure all components work seamlessly, set the following environment variables in your `.env` file using `.local.env.example` as a reference.
+## 🛠️ Setup
 
-You can find the API key on the [Coinbase Developer Portal's OnchainKit page](https://portal.cdp.coinbase.com/products/onchainkit). If you don't have an account, you will need to create one. 
+To get started, you'll need to set up a few environment variables in your `.env` file. Use `.local.env.example` as a reference.
 
-You can find your Coinbase Commerce API key on [Coinbase Commerce](https://beta.commerce.coinbase.com/). If you don't have an account, you will need to create one. 
+### API Keys
 
-```sh
-# See https://portal.cdp.coinbase.com/products/onchainkit
-NEXT_PUBLIC_ONCHAINKIT_API_KEY="GET_FROM_COINBASE_DEVELOPER_PLATFORM"
+1. Get your OnchainKit API key from the [Coinbase Developer Portal](https://portal.cdp.coinbase.com/products/onchainkit)
+2. Get your Coinbase Commerce API key from [Coinbase Commerce](https://beta.commerce.coinbase.com/)
 
-# See https://beta.commerce.coinbase.com/
-NEXT_PUBLIC_COINBASE_COMMERCE_API_KEY="GET_FROM_COINBASE_COMMERCE"
-```
-<br />
+> New to Coinbase Commerce? No worries! Just create an account to get your API key.
 
-## Enabling checkout
+## 🔧 Enabling Checkout
 
-By default, the checkout functionality is disabled to prevent transactions in non-production environments. To enable the checkout flow for local development, you need to uncomment the code found in the `OnchainStoreCart.tsx` component, along with the imports at the top of the file.
+By default, checkout is disabled to prevent transactions in non-production environments. To enable it for local development:
 
-You can also remove the `OnchainStoreModal` component and logic as well as the `MockCheckoutButton` as these were created for demo purposes only. 
+1. Open `OnchainStoreCart.tsx`
+2. Uncomment the checkout code and imports
+3. Remove the `OnchainStoreModal` component and `MockCheckoutButton` (they're just for demo purposes)
+4. Replace `products` in `OnchainStoreProvider` with your own items
 
-Next, you'll want to replace `products` in the `OnchainStoreProvider` with your own product items. 
+> 💡 This template uses our advanced multi-product checkout implementation. Learn more in our [Checkout component docs](https://onchainkit.xyz/checkout/checkout).
 
-
->This template showcases a multi-product checkout implementation of our `Checkout` component using the `chargeHandler` approach. You can read more about this implementation in the Advanced Usage section of our `Checkout` component docs here: https://onchainkit.xyz/checkout/checkout
-
-
-<br />
-
-## Running locally
-
-
+## 🏃‍♂️ Running Locally
 
 ```sh
-# Install bun in case you don't have it
-bun curl -fsSL <https://bun.sh/install> | bash
+# Install bun (if you don't have it)
+curl -fsSL https://bun.sh/install | bash
 
 # Install packages
 bun i
@@ -55,14 +49,15 @@ bun i
 # Run Next app
 bun run dev
 ```
-<br />
 
-## Resources
+## 📚 Resources
 
 - [OnchainKit documentation](https://onchainkit.xyz)
 
-<br />
+## 📄 License
 
-## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+---
+
+Built with ❤️ using OnchainKit
