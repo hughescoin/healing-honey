@@ -13,7 +13,7 @@ Introducing **Healing Honey** - a cutting-edge eCommerce store built with [Oncha
 - 🔐 Smart Wallet integration for seamless account creation and login
 - 🎨 Beautiful, responsive design
 
-Try it live at: https://onchain-commerce-template.vercel.app/
+Try it live at: https://healing-honey.vercel.app/
 
 ## 🛠️ Setup
 
