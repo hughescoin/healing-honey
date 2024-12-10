@@ -79,7 +79,7 @@ export default function OnchainStoreCart({
               TOTAL {totalSum.toFixed(2)} USDC
             </h2>
             <div className='flex items-center space-x-4'>
-              <div className='flex items-center w-64 -mt-[12px]'>
+              <div className='flex items-center w-64 -mt-[14px]'>
                 <Checkout
                   key={key}
                   onStatus={handleStatusChange}
