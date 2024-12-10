@@ -90,7 +90,7 @@ export default function Subscribe() {
       token: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913' as Address,
       allowance: parseUnits(subscriptionAmount.toFixed(6), 6),
       period: 2592000, // 30 days, sometimes 29 ;)
-      start: 0,
+      start: Math.floor(Date.now() / 1000),
       end: 281474976710655,
       salt: BigInt(0),
       extraData: '0x' as Hex,
