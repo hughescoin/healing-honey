@@ -4,15 +4,15 @@
 
 ## Healing Honey
 
-Healing Honey is a fictitious e-commerce site that sells high-MGO, potent Manuka honey.
+Healing Honey is a fictitious eCommerce site that utilizes Spend Permissions to offer onchain subscriptions to Manuka Honey.
 
-This site was created to demonstrate [Spend Permissions], a new primitive that allows transactions without requiring wallet authorization for each transaction. It enables users to approve an app to spend funds on their behalf, allowing subsequent app interactions to occur without prompting the user to accept, sign, or approve each transaction.
-
-Use cases include subscription payments, automatic buys (dollar-cost averaging), and sells, but many more are possible.
+This site was created to demonstrate [Spend Permissions]. With Spend Permissions, Smart Wallet users can authorize an app to spend funds on their behalf. This allows the app to execute subsequent transactions, within a specified set of rules, without additional user authentication. This greatly improves user experience and unlocks entirely new onchain functionality like automated subscription payments!
 
 ## Spend Permissions
 
-Spend Permissions are enabled using EIP-712 signatures and work with both EOAs and Smart Accounts, such as [Base Wallet].
+Spend Permissions are enabled using EIP-712 signatures and work with both EOAs and Smart Accounts, such as [Smart Wallet].
+
+Use cases include subscription payments, automatic buys (dollar-cost averaging), and sells, but many more are possible.
 
 The Spend Permission struct is as follows:
 
@@ -28,7 +28,7 @@ The Spend Permission struct is as follows:
 | `salt`      | `uint256` | An arbitrary salt to differentiate unique spend permissions with otherwise identical data. |
 | `extraData` | `bytes`   | Arbitrary data to include in the permission.                                               |
 
-Spend Permissions can be approved off-chain and revoked onchain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
+Spend Permissions can be approved offchain and revoked onchain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
 
 ![REVOKE](https://i.imgur.com/mZOaocK.png)
 
@@ -96,5 +96,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ---
 
 [Spend Permissions]: https://www.smartwallet.dev/guides/spend-permissions/overview
-[Base Wallet]: https://www.smartwallet.dev/
+[Smart Wallet]: https://www.smartwallet.dev/
 [Checkout]: https://onchainkit.xyz/checkout/checkout
