@@ -1,17 +1,50 @@
-# Healing Honey eCommerce Store 🍯
+# Spend Permissions Demo App
 
-<img width="1200" alt="Thumbnail (1)" src="/src/images/project-thumbnail.png">
+<img  width="1200"  alt="Thumbnail (1)"  src="/src/images/project-thumbnail.png">
 
-## 🚀 Welcome to the Future of eCommerce!
+## Healing Honey
 
-Building an eCommerce store with crypto payments has never been easier! With just a few lines of code, you can start accepting payments and managing subscriptions.
+Healing Honey is a fictitious e-commerce site that sells high-MGO, potent Manuka honey.
 
-Introducing **Healing Honey** - a cutting-edge eCommerce store built with [OnchainKit](https://onchainkit.xyz). This demo showcases the power of Web3 commerce with:
+This site was created to demonstrate [Spend Permissions], a new primitive that allows transactions without requiring wallet authorization for each transaction. It enables users to approve an app to spend funds on their behalf, allowing subsequent app interactions to occur without prompting the user to accept, sign, or approve each transaction.
 
-- ⚡ One-click USDC payments powered by Coinbase Commerce
+Use cases include subscription payments, automatic buys (dollar-cost averaging), and sells, but many more are possible.
+
+## Spend Permissions
+
+Spend Permissions are enabled using EIP-712 signatures and work with both EOAs and Smart Accounts, such as [Base Wallet].
+
+The Spend Permission struct is as follows:
+
+| Field       | Type      | Description                                                                                |
+| ----------- | --------- | ------------------------------------------------------------------------------------------ |
+| `account`   | `address` | Smart account this spend permission is valid for.                                          |
+| `spender`   | `address` | Entity that can spend `account`'s tokens.                                                  |
+| `token`     | `address` | Token address (ERC-7528 native token address or ERC-20 contract).                          |
+| `allowance` | `uint160` | Maximum allowed value to spend within each `period`.                                       |
+| `period`    | `uint48`  | Time duration for resetting used `allowance` on a recurring basis (seconds).               |
+| `start`     | `uint48`  | Timestamp this spend permission is valid starting at (unix seconds).                       |
+| `end`       | `uint48`  | Timestamp this spend permission is valid until (unix seconds).                             |
+| `salt`      | `uint256` | An arbitrary salt to differentiate unique spend permissions with otherwise identical data. |
+| `extraData` | `bytes`   | Arbitrary data to include in the permission.                                               |
+
+Spend Permissions can be approved off-chain and revoked on-chain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
+
+![REVOKE](https://imgur.com/a/1zHxXaQ)
+
+## Demo
+
+This demo store is equipped with one-click USDC payments (leveraged by OnchainKit's [Checkout] component) and subscription payments (spend permissions).
+
+For the purposes of this demo, USDC payments are disabled. However, you can enable them by following the instructions below.
+
+Healing Honey uses Smart Wallets to allow for easy account creation (sign-up) and logins, utilizing components from the OnchainKit library.
+
+### Features
+
+- ⚡ One-click USDC payments powered by [Coinbase Commerce]
 - 💫 Crypto subscription payments
 - 🔐 Smart Wallet integration for seamless account creation and login
-- 🎨 Beautiful, responsive design
 
 Try it live at: https://healing-honey.vercel.app/
 
@@ -52,12 +85,10 @@ bun run dev
 
 ## 📚 Resources
 
+- [Smart Wallet Spend Permissions documentation](https://www.smartwallet.dev/guides/spend-permissions/quick-start)
 - [OnchainKit documentation](https://onchainkit.xyz)
+- [Spend Permissions Repo](https://github.com/coinbase/spend-permissions)
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
----
-
-Built with ❤️ using OnchainKit
