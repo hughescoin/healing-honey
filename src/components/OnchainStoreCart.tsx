@@ -67,7 +67,7 @@ export default function OnchainStoreCart({
   }, [setShowModal]);
 
   return (
-    <div className='-mx-[50vw] fixed right-1/2 bottom-0 left-1/2 w-screen border-gray-200 border-t bg-[white]'>
+    <div className='-mx-[50vw] fixed right-1/2 bottom-0 left-1/2 w-screen border-gray-200 border-t bg-[white] pb-safe'>
       {showModal && <OnchainStoreModal closeModal={closeModal} />}
       <div className='mx-auto max-w-5xl'>
         <div className='flex flex-col items-start justify-between py-4 md:flex-row md:items-center'>
@@ -75,7 +75,7 @@ export default function OnchainStoreCart({
             Built with OnchainKit
           </span>
           <div className='flex w-full grow flex-col items-center justify-between gap-2 px-4 sm:flex-row sm:gap-4 md:w-auto lg:px-6'>
-            <h2 className='font-bold text-lg md:w-auto'>
+            <h2 className='font-bold text-lg md:w-auto mb-2 sm:mb-0'>
               TOTAL {totalSum.toFixed(2)} USDC
             </h2>
             <div className='flex flex-col w-full sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0'>
