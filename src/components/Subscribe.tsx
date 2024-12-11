@@ -87,7 +87,7 @@ export default function Subscribe() {
     const message = {
       account: accountAddress,
       spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address,
-      token: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913' as Address,
+      token: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' as Address,
       allowance: parseUnits(subscriptionAmount.toFixed(6), 6),
       period: 2592000, // 30 days, sometimes 29 ;)
       start: Math.floor(Date.now() / 1000),
