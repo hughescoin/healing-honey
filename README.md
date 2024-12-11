@@ -28,7 +28,7 @@ The Spend Permission struct is as follows:
 | `salt`      | `uint256` | An arbitrary salt to differentiate unique spend permissions with otherwise identical data. |
 | `extraData` | `bytes`   | Arbitrary data to include in the permission.                                               |
 
-Spend Permissions can be approved off-chain and revoked on-chain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
+Spend Permissions can be approved off-chain and revoked onchain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
 
 ![REVOKE](https://i.imgur.com/mZOaocK.png)
 
