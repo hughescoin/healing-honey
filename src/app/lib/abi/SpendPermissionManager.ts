@@ -1,7 +1,7 @@
 import { Address } from 'viem';
 
 export const spendPermissionManagerAddress =
-  '0xD5Ca2d1818a835B10f78b45Bc1cD5Db305c10fA8' as Address;
+  '0xf85210B21cC50302F477BA56686d2019dC9b67Ad' as Address;
 
 export const spendPermissionManagerAbi = [
   {
