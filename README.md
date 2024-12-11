@@ -30,7 +30,7 @@ The Spend Permission struct is as follows:
 
 Spend Permissions can be approved off-chain and revoked on-chain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
 
-![REVOKE](https://imgur.com/a/1zHxXaQ)
+![REVOKE](https://i.imgur.com/mZOaocK.png)
 
 ## Demo
 
