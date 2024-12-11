@@ -42,7 +42,7 @@ Healing Honey uses Smart Wallets to allow for easy account creation (sign-up) an
 
 ### Features
 
-- ⚡ One-click USDC payments powered by [Coinbase Commerce]
+- ⚡ One-click USDC payments
 - 💫 Crypto subscription payments
 - 🔐 Smart Wallet integration for seamless account creation and login
 
@@ -92,3 +92,9 @@ bun run dev
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+---
+
+[Spend Permissions]: https://www.smartwallet.dev/guides/spend-permissions/overview
+[Base Wallet]: https://www.smartwallet.dev/
+[Checkout]: https://onchainkit.xyz/checkout/checkout
