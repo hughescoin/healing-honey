@@ -78,8 +78,8 @@ export default function OnchainStoreCart({
             <h2 className='font-bold text-lg md:w-auto'>
               TOTAL {totalSum.toFixed(2)} USDC
             </h2>
-            <div className='flex items-center space-x-4'>
-              <div className='flex items-center w-64 -mt-[14px]'>
+            <div className='flex flex-col w-full sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0'>
+              <div className='w-full sm:w-64'>
                 <Checkout
                   key={key}
                   onStatus={handleStatusChange}
@@ -92,7 +92,7 @@ export default function OnchainStoreCart({
                   />
                 </Checkout>
               </div>
-              <div className='flex items-center w-64'>
+              <div className='w-full sm:w-64'>
                 <Subscribe />
               </div>
             </div>
