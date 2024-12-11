@@ -11,10 +11,10 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Onchain Commerce Template',
+  title: 'Healing Honey | 100% Organic Manuka Honey',
   description: 'Built with OnchainKit',
   openGraph: {
-    title: 'Onchain Commerce Template',
+    title: 'Healing Honey | 100% Organic Manuka Honey',
     description: 'Built with OnchainKit',
     images: [`${NEXT_PUBLIC_URL}/vibes/vibes-19.png`],
   },
