@@ -88,7 +88,7 @@ export default function Subscribe() {
       account: accountAddress,
       spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address,
       token: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' as Address,
-      allowance: parseUnits(subscriptionAmount.toFixed(6), 6),
+      allowance: parseUnits((subscriptionAmount / 3800).toFixed(18), 18), //remove
       period: 2592000, // 30 days, sometimes 29 ;)
       start: Math.floor(Date.now() / 1000),
       end: 281474976710655,
@@ -184,48 +184,15 @@ export default function Subscribe() {
           </button>
         </div>
       ) : (
-        <div className='space-y-8 w-[450px]'>
-          <div className='flex'>
-            <button
-              className={cn(
-                pressable.primary,
-                'w-full rounded-xl',
-                'px-4 py-3 font-medium text-base text-white leading-6',
-                isDisabled && pressable.disabled,
-                text.headline
-              )}
-              onClick={() => refetch()}
-              type='button'
-              disabled={isDisabled}
-              data-testid='collectSubscriptionButton_Button'
-            >
-              <span
-                className={cn(
-                  text.headline,
-                  color.inverse,
-                  'flex justify-center'
-                )}
-              >
-                Collect Subscription
-              </span>
-            </button>
+        <>
+          {data?.transactionHash &&
+            typeof window !== 'undefined' &&
+            window.location.replace(`/success?tx=${data.transactionHash}`)}
+          <div className='flex flex-col items-center justify-center'>
+            <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mb-4'></div>
+            <div>Processing transaction...</div>
           </div>
-          <div className='h-80 space-y-4 relative'>
-            <div className='text-lg font-bold'>Subscription Payments</div>
-            <div className='flex flex-col'>
-              {transactions.map((transactionHash, i) => (
-                <a
-                  key={i}
-                  className='hover:underline text-ellipsis truncate'
-                  target='_blank'
-                  href={`https://basescan.org/tx/${transactionHash}`}
-                >
-                  View transaction {transactionHash}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+        </>
       )}
     </div>
   );
