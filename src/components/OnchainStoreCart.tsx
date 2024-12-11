@@ -86,9 +86,9 @@ export default function OnchainStoreCart({
                   chargeHandler={chargeHandler}
                 >
                   <CheckoutButton
-                    coinbaseBranded={true}
-                    text='Pay with Crypto'
-                    disabled={!totalSum}
+                    coinbaseBranded={false}
+                    text='Disabled for demo'
+                    disabled={true}
                   />
                 </Checkout>
               </div>
