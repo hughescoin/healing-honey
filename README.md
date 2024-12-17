@@ -14,6 +14,9 @@ Spend Permissions are enabled using EIP-712 signatures and work with both EOAs a
 
 Use cases include subscription payments, automatic buys (dollar-cost averaging), and sells, but many more are possible.
 
+> [!IMPORTANT]
+> To create a subscription service similar to traditional models, you need a server-side service (e.g., a cron job) that executes the Spend function on your behalf.
+
 The Spend Permission struct is as follows:
 
 | Field       | Type      | Description                                                                                |
@@ -31,6 +34,9 @@ The Spend Permission struct is as follows:
 Spend Permissions can be approved offchain and revoked onchain (which requires gas). Smart Wallet users can manage (revoke) their Spend Permissions through the settings page of their Smart Wallet.
 
 ![REVOKE](https://i.imgur.com/mZOaocK.png)
+
+> [!TIP]
+> You can retrieve valid (non-revoked) spend permissions for an account by polling the utility API endpoint: https://rpc.wallet.coinbase.com. Refer to our [schema definition](https://www.smartwallet.dev/guides/spend-permissions/api-reference/coinbase-fetchpermissions) for details.
 
 ## Demo
 
