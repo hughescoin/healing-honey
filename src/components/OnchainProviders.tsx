@@ -15,7 +15,7 @@ const config = createConfig({
       appName: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
       preference: 'smartWalletOnly',
       // @ts-ignore
-      keysUrl: 'https://keys-dev.coinbase.com/connect',
+      keysUrl: 'https://keys.coinbase.com/connect',
     }),
   ],
   storage: createStorage({
